@@ -28,15 +28,6 @@
 
                 <form action="{{ route('register') }}" method="post">
                     @csrf
-                    <x-auth-validation-errors name="nim" />
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="nim" placeholder="NIM">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-id-badge"></span>
-                            </div>
-                        </div>
-                    </div>
                     <x-auth-validation-errors name="name" />
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="name" placeholder="Nama Lengkap">
@@ -70,15 +61,6 @@
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <x-auth-validation-errors name="prodi" />
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="prodi" placeholder="Program Studi">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-graduation-cap"></span>
                             </div>
                         </div>
                     </div>

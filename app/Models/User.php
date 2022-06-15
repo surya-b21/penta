@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         $this->hasOne(Role::class);
     }
+
+    public function mahasiswa()
+    {
+        $this->belongsTo(Mahasiswa::class);
+    }
 }
