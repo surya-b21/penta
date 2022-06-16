@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KonfirmasiController;
 use App\Http\Controllers\PendaftaranController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::middleware(['auth', 'dosen'])->group(function () {
-    Route::get('/dosen/home', [HomeController::class, 'dosen'])->name('dosen.home');
+Route::prefix('dosen')->as('dosen.')->middleware(['auth', 'dosen'])->group(function () {
+    Route::get('/home', [HomeController::class, 'dosen'])->name('home');
+    Route::prefix('konfirmasi')->as('konfirmasi.')->group(function () {
+        Route::get('/', [KonfirmasiController::class, 'index'])->name('index');
+    });
 });

@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('home') }}" class="brand-link">
+    <a href="{{ route('dosen.home') }}" class="brand-link">
         <img src="{{ asset('img/logo.png') }}" alt="Tel-U Logo" class="brand-image img-circle" style="opacity: .8">
         <span class="brand-text font-weight-bold text-uppercase text-danger ml-5">Penta</span>
     </a>
@@ -39,10 +39,10 @@
                 <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('dosen.konfirmasi.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
-                            Persyaratan
+                            Konfirmasi Sidang
                             {{-- <i class="right fas fa-angle-left"></i> --}}
                         </p>
                     </a>
