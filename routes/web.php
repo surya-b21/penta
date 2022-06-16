@@ -29,4 +29,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/update', [PendaftaranController::class, 'update'])->name('update');
     });
 });
-Route::get('/dosen/home', [HomeController::class, 'dosen'])->name('dosen.home')->middleware(['dosen']);
+
+Route::middleware(['auth', 'dosen'])->group(function () {
+    Route::get('/dosen/home', [HomeController::class, 'dosen'])->name('dosen.home');
+});
