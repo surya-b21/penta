@@ -20,9 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/403', function () {
+    return view('403');
+})->name('403');
+
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'mahasiswa'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
         Route::get('/', [PendaftaranController::class, 'index'])->name('index');
