@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PendaftaranController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
+        Route::get('/', [PendaftaranController::class, 'index'])->name('index');
+    });
+});
 Route::get('/dosen/home', [HomeController::class, 'dosen'])->name('dosen.home')->middleware(['dosen']);
