@@ -31,7 +31,7 @@ class PendaftaranController extends Controller
         ]);
 
         if ($req->file()) {
-            $fileName = Auth::user()->name . '_berkas';
+            $fileName = Auth::user()->name . '_berkas.' . $req->file('berkas')->extension();
             $filePath = Storage::putFileAs('public/sidang', $req->berkas, $fileName);
 
             $mahasiswa = new Mahasiswa;
@@ -50,9 +50,9 @@ class PendaftaranController extends Controller
             $daftar_sidang->id_mhs = $mhs_id->id;
             $daftar_sidang->save();
 
-            return redirect()->route('pendaftaran.index')->with('sukses');
+            return redirect()->route('pendaftaran.index')->with('sukses', "<strong>Berhasil</strong> melakukan pendaftaran");
         }
 
-        return redirect()->route('pendaftaran.index')->with('gagal');
+        return redirect()->route('pendaftaran.index')->with('gagal', "<strong>Gagal</strong> melakukan pendaftaran");
     }
 }

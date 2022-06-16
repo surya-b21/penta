@@ -15,6 +15,12 @@ class DaftarSidang extends Model
         'nilai_akhir',
         'judul_ta',
         'berkas',
-        'status'
+        'status',
+        'id_mhs'
     ];
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'id_mhs');
+    }
 }

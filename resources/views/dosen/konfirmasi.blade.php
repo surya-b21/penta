@@ -1,4 +1,12 @@
 <x-dosen-layout>
+    @if ($pesan = Session::get('sukses'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {!! $pesan !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <x-slot name="header">Konfirmas Pendaftaran Sidang</x-slot>
     <x-slot name="styles">
         <!-- DataTables -->
@@ -24,9 +32,20 @@
         <script>
             $(function() {
                 $("#example1").DataTable({
+                    processing: true,
+                    serverSide: true,
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
+                    "ajax": "{{ route('dosen.konfirmasi.get') }}",
+                    "columns": [
+                        {"data":"id_mhs","name":"id_mhs"},
+                        {"data":"judul_ta","name":"judul_ta"},
+                        {"data":"nilai_akhir","name":"nilai_akhir"},
+                        {"data":"berkas","name":"berkas","class":"text-center"},
+                        {"data":"status","name":"status", "class":"text-center"},
+                        {"data":"aksi","name":"aksi", "class":"text-center"},
+                    ],
                 });
             });
         </script>
@@ -34,7 +53,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">DataTable with minimal features & hover style</h3>
+            <h3 class="card-title">Tabel Konfirmasi</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -44,6 +63,8 @@
                         <th>Nama</th>
                         <th>Judul TA</th>
                         <th>Nilai Akhir</th>
+                        <th>Berkas</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -54,6 +75,8 @@
                         <th>Nama</th>
                         <th>Judul TA</th>
                         <th>Nilai Akhir</th>
+                        <th>Berkas</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>

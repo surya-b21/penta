@@ -1,18 +1,18 @@
 <x-app-layout>
     <x-slot name="header">Pendaftaran</x-slot>
 
-    @if (Session::get('sukses'))
+    @if ($pesan = Session::get('sukses'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Berhasil</strong> Melakukan pendaftaran
+            {!! $pesan !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     @endif
 
-    @if (Session::get('gagal'))
+    @if ($pesaan = Session::get('gagal'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Gagal</strong> Melakukan pendaftaran
+            {!! $pesan !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

@@ -35,5 +35,8 @@ Route::prefix('dosen')->as('dosen.')->middleware(['auth', 'dosen'])->group(funct
     Route::get('/home', [HomeController::class, 'dosen'])->name('home');
     Route::prefix('konfirmasi')->as('konfirmasi.')->group(function () {
         Route::get('/', [KonfirmasiController::class, 'index'])->name('index');
+        Route::get('/get-data', [KonfirmasiController::class, 'getdatasidang'])->name('get');
+        Route::get('/read/{judul}', [KonfirmasiController::class, 'readberkas'])->name('read');
+        Route::get('/verif/{id}', [KonfirmasiController::class, 'verif'])->name('verif');
     });
 });
