@@ -115,7 +115,7 @@
             <div class="col">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nilai Tugas Akhir</label>
-                    <input type="text" class="form-control" name="nilai_akhir"
+                    <input type="number" class="form-control" name="nilai_akhir"
                         value="{{ old('nilai_akhir', $daftar_sidang->nilai_akhir) }}" placeholder="Masukkan nilai tugas akhir">
                 </div>
             </div>

@@ -25,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
         Route::get('/', [PendaftaranController::class, 'index'])->name('index');
+        Route::post('/store', [PendaftaranController::class, 'store'])->name('store');
+        Route::put('/update', [PendaftaranController::class, 'update'])->name('update');
     });
 });
 Route::get('/dosen/home', [HomeController::class, 'dosen'])->name('dosen.home')->middleware(['dosen']);

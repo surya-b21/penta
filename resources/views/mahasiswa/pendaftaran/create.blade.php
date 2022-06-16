@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('pendaftara.store') }}">
+<form method="POST" action="{{ route('pendaftaran.store') }}" enctype="multipart/form-data">
     @csrf
     @include('mahasiswa.pendaftaran.partials.form', ['daftar_sidang' => new App\Models\DaftarSidang, 'mahasiswa' => new App\Models\Mahasiswa])
 
