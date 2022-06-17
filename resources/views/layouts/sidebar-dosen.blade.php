@@ -62,6 +62,14 @@
                     </ul> --}}
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('dosen.jadwal.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                            Konfirmasi Jadwal
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">

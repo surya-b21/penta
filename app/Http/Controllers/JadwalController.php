@@ -12,7 +12,9 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        return view('mahasiswa.jadwal.index');
+        $user = Mahasiswa::where('id_user', Auth::id())->first();
+        $data['jadwal_sidang'] = JadwalSidang::where('id_mhs', $user->id)->first();
+        return view('mahasiswa.jadwal.index', $data);
     }
 
     public function create()
@@ -74,8 +76,8 @@ class JadwalController extends Controller
         foreach ($jadwal as $data) {
             $json['start'] = $data->tanggal;
             $json['allDay'] = false;
-            $json['url'] = route('jadwal.edit', $data->id);
             if ($data->status == 0) {
+                $json['url'] = route('jadwal.edit', $data->id);
                 $json['backgroundColor'] = "#d9534f";
                 $json['borderColor'] = "#d9534f";
             } else {

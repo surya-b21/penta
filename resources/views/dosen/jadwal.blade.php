@@ -1,4 +1,5 @@
-<x-app-layout>
+<x-dosen-layout>
+    <x-slot name="header">Konfirmasi Jadwal</x-slot>
     @if ($pesan = Session::get('sukses'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {!! $pesan !!}
@@ -12,16 +13,6 @@
         <!-- fullCalendar -->
         <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fullcalendar/main.css') }}">
     </x-slot>
-
-    @if ($jadwal_sidang->status == 1)
-        <div class="row pl-2 pb-3">
-            <a href="{{ route('jadwal.create') }}" class="btn btn-primary disabled">Jadwal anda telah diverifikasi</a>
-        </div>
-    @else
-        <div class="row pl-2 pb-3">
-            <a href="{{ route('jadwal.create') }}" class="btn btn-primary">Pilih jadwal</a>
-        </div>
-    @endif
 
     <div class="card card-primary">
         <div class="card-body p-0">
@@ -38,11 +29,6 @@
         <script src="{{ asset('admin-lte/plugins/fullcalendar/main.js') }}"></script>
         <!-- Page specific script -->
         <script>
-            var date = new Date()
-            var d = date.getDate(),
-                m = date.getMonth(),
-                y = date.getFullYear();
-            console.log(Date(y, m, d));
             document.addEventListener('DOMContentLoaded', function() {
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -54,10 +40,10 @@
                     initialView: 'timeGridWeek',
                     editable: true,
                     themeSystem: 'bootstrap',
-                    events: "{{ route('jadwal.get') }}"
+                    events: "{{ route('dosen.jadwal.get') }}"
                 });
                 calendar.render();
             });
         </script>
     </x-slot>
-</x-app-layout>
+</x-dosen-layout>

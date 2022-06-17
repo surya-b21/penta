@@ -6,6 +6,8 @@ use App\Models\DaftarSidang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\JadwalSidang;
+use App\Models\Mahasiswa;
 
 class KonfirmasiController extends Controller
 {
@@ -54,5 +56,46 @@ class KonfirmasiController extends Controller
             })
             ->rawColumns(['aksi', 'status', 'berkas'])
             ->make(true);
+    }
+
+    public function jadwal()
+    {
+        return view('dosen.jadwal');
+    }
+
+    public function verifJadwal($id)
+    {
+        $jadwal = JadwalSidang::findOrFail($id);
+        $jadwal->status = 1;
+        $jadwal->save();
+
+        return redirect()->route('dosen.jadwal.index')->with('sukses', '<strong>Berhasil</strong> verifikasi jadwal');
+    }
+
+    public function getJadwal()
+    {
+        $jadwal = JadwalSidang::select(['id', 'tanggal', 'status', 'id_mhs'])->get();
+        $user = Mahasiswa::all();
+
+        $json = [];
+
+        foreach ($user as $data) {
+            $json['title'] = $data->user->name;
+        }
+
+        foreach ($jadwal as $data) {
+            $json['start'] = $data->tanggal;
+            $json['allDay'] = false;
+            if ($data->status == 0) {
+                $json['url'] = route('dosen.jadwal.verif', $data->id);
+                $json['backgroundColor'] = "#d9534f";
+                $json['borderColor'] = "#d9534f";
+            } else {
+                $json['backgroundColor'] = "#5cb85c";
+                $json['borderColor'] = "#5cb85c";
+            }
+        }
+
+        return response()->json([$json]);
     }
 }
