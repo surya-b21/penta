@@ -19,11 +19,16 @@ class Mahasiswa extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function daftarsidang()
     {
         return $this->hasOne(DaftarSidang::class, 'id_mhs');
+    }
+
+    public function jadwalsidang()
+    {
+        return $this->hasOne(JadwalSidang::class, 'id_mhs');
     }
 }

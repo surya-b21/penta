@@ -46,11 +46,11 @@ class User extends Authenticatable
 
     public function role()
     {
-        $this->belongsTo(Role::class);
+        $this->belongsTo(Role::class, 'role');
     }
 
     public function mahasiswa()
     {
-        $this->hasOne(Mahasiswa::class);
+        $this->hasOne(Mahasiswa::class, 'id_user');
     }
 }

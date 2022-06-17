@@ -24,4 +24,16 @@
     @else
         @include('mahasiswa.pendaftaran.create')
     @endif
+
+    <x-slot name="scripts">
+        <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+        <script>
+            $('#inputGroupFile01').on('change', function() {
+                //get the file name
+                var fileName = $(this).val().split('\\').pop();;
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+        </script>
+    </x-slot>
 </x-app-layout>

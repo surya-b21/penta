@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KonfirmasiController;
 use App\Http\Controllers\PendaftaranController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,14 @@ Route::middleware(['auth', 'mahasiswa'])->group(function () {
         Route::get('/', [PendaftaranController::class, 'index'])->name('index');
         Route::post('/store', [PendaftaranController::class, 'store'])->name('store');
         Route::put('/update', [PendaftaranController::class, 'update'])->name('update');
+    });
+    Route::prefix('jadwal')->as('jadwal.')->group(function () {
+        Route::get('/', [JadwalController::class, 'index'])->name('index');
+        Route::get('/get-data', [JadwalController::class, 'getjadwal'])->name('get');
+        Route::get('/create', [JadwalController::class, 'create'])->name('create');
+        Route::post('/store', [JadwalController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [JadwalController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [JadwalController::class, 'update'])->name('update');
     });
 });
 

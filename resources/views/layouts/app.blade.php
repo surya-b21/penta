@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
+    {!! $styles ?? null !!}
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -75,17 +76,9 @@
     <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-    <script>
-        $('#inputGroupFile01').on('change',function(){
-            //get the file name
-            var fileName = $(this).val().split('\\').pop();;
-            //replace the "Choose a file" label
-            $(this).next('.custom-file-label').html(fileName);
-        })
-    </script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin-lte/dist/js/adminlte.min.js') }}"></script>
+    {!! $scripts ?? null !!}
 </body>
 
 </html>
