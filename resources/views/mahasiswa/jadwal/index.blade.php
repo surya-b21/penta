@@ -13,15 +13,44 @@
         <link rel="stylesheet" href="{{ asset('admin-lte/plugins/fullcalendar/main.css') }}">
     </x-slot>
 
-    @if ($jadwal_sidang->status == 1)
+    @if ((isset($jadwal_sidang)))
+        @if ($jadwal_sidang->status == 1)
+            <div class="row pl-2 pb-3">
+                <a href="{{ route('jadwal.create') }}" class="btn btn-success disabled">Jadwal anda telah diverifikasi</a>
+            </div>
+        @else
+            <div class="row pl-2 pb-3">
+                <a href="{{ route('jadwal.create') }}" class="btn btn-primary disabled">Klik jadwal anda untuk mengganti jadwal</a>
+            </div>
+        @endif
+    @else
+        @if (isset($mahasiswa->daftarsidang))
+            <div class="row pl-2 pb-3">
+                <a href="{{ route('jadwal.create') }}" class="btn btn-primary">Pilih jadwal</a>
+            </div>
+        @else
+            <div class="row pl-2 pb-3">
+                <a href="{{ route('jadwal.create') }}" class="btn btn-danger disabled">Anda belum melakukan pendaftaran sidang</a>
+            </div>
+        @endif
+    @endif
+
+    {{-- @if ((isset($jadwal_sidang) && $jadwal_sidang->status == 1))
         <div class="row pl-2 pb-3">
-            <a href="{{ route('jadwal.create') }}" class="btn btn-primary disabled">Jadwal anda telah diverifikasi</a>
+            <a href="{{ route('jadwal.create') }}" class="btn btn-success disabled">Jadwal anda telah diverifikasi</a>
         </div>
     @else
-        <div class="row pl-2 pb-3">
-            <a href="{{ route('jadwal.create') }}" class="btn btn-primary">Pilih jadwal</a>
-        </div>
-    @endif
+        @if ((isset($jadwal_sidang) && $jadwal_sidang->mahasiswa->daftarsidang->status == 1))
+            <div class="row pl-2 pb-3">
+                <a href="{{ route('jadwal.create') }}" class="btn btn-primary">Pilih jadwal</a>
+            </div>
+        @else
+            <div class="row pl-2 pb-3">
+                <a href="{{ route('jadwal.create') }}" class="btn btn-danger disabled">Anda belum melakukan
+                    pendaftaran</a>
+            </div>
+        @endif
+    @endif --}}
 
     <div class="card card-primary">
         <div class="card-body p-0">

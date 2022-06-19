@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col text-center pb-3">
             @if ($daftar_sidang->status == 0)
-                <button type="submit" class="btn btn-lg btn-block btn-success">Submit</button>
+                <button type="submit" class="btn btn-lg btn-block btn-success">Update data</button>
             @else
                 <button type="submit" class="btn btn-lg btn-block btn-success" disabled>Pendaftaran anda telah diverifikasi</button>
             @endif

@@ -12,8 +12,8 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        $user = Mahasiswa::where('id_user', Auth::id())->first();
-        $data['jadwal_sidang'] = JadwalSidang::where('id_mhs', $user->id)->first();
+        $data['mahasiswa'] = Mahasiswa::where('id_user', Auth::id())->first();
+        $data['jadwal_sidang'] = JadwalSidang::where('id_mhs', $data['mahasiswa']->id)->first();
         return view('mahasiswa.jadwal.index', $data);
     }
 
