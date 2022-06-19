@@ -2,7 +2,7 @@
     <x-slot name="header">Pilih jadwal</x-slot>
     <form action="{{ route('jadwal.store') }}" method="POST">
         @csrf
-        @include('mahasiswa.jadwal.partials.form', ['jadwal' => new App\Models\JadwalSidang()])
+        @include('mahasiswa.jadwal.partials.form', ['jadwal_sidang' => new App\Models\JadwalSidang()])
 
         <div class="row pl-2 pb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
