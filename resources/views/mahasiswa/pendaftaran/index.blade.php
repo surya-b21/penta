@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    @if ($pesaan = Session::get('gagal'))
+    @if ($pesan = Session::get('gagal'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {!! $pesan !!}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    @if ($daftar_sidang)
+    @if ($mahasiswa)
         @include('mahasiswa.pendaftaran.edit')
     @else
         @include('mahasiswa.pendaftaran.create')

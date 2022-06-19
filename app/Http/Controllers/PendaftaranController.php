@@ -15,7 +15,9 @@ class PendaftaranController extends Controller
     {
         $id = Auth::id();
         $data['mahasiswa'] = Mahasiswa::where('id_user', $id)->first();
-        $data['daftar_sidang'] = DaftarSidang::where('id_mhs', $data['mahasiswa']->id)->first();
+        if (isset($data['mahasiswa'])) {
+            $data['daftar_sidang'] = DaftarSidang::where('id_mhs', $data['mahasiswa']->id)->first();
+        }
         return view('mahasiswa.pendaftaran.index', $data);
     }
 

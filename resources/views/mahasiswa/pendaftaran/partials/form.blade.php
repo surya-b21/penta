@@ -17,6 +17,7 @@
                     <input type="text" class="form-control" id="exampleInputEmail1" name="name"
                         value="{{ old('name') ?? Auth::user()->name }}" placeholder="Masukkan nama lengkap">
                 </div>
+                <x-auth-validation-errors name="name"/>
             </div>
         </div>
         <!-- /.row -->
@@ -109,6 +110,7 @@
                     <input type="text" class="form-control" name="judul_ta"
                         value="{{ old('judul_ta', $daftar_sidang->judul_ta) }}" placeholder="Masukkan judul tugas akhir">
                 </div>
+                <x-auth-validation-errors name="judul_ta"/>
             </div>
         </div>
         <div class="row">
@@ -118,6 +120,7 @@
                     <input type="number" class="form-control" name="nilai_akhir"
                         value="{{ old('nilai_akhir', $daftar_sidang->nilai_akhir) }}" placeholder="Masukkan nilai tugas akhir">
                 </div>
+                <x-auth-validation-errors name="nilai_akhir"/>
             </div>
         </div>
         <div class="row">
@@ -127,6 +130,7 @@
                     <input type="text" class="form-control" name="nim"
                         value="{{ old('nim', $mahasiswa->nim) }}" placeholder="Masukkan nim">
                 </div>
+                <x-auth-validation-errors name="nim"/>
             </div>
             <div class="col">
                 <div class="form-group">
@@ -134,6 +138,7 @@
                     <input type="text" class="form-control" name="prodi"
                         value="{{ old('prodi', $mahasiswa->prodi) }}" placeholder="Masukkan prodi">
                 </div>
+                <x-auth-validation-errors name="prodi"/>
             </div>
         </div>
     </div>
@@ -168,6 +173,7 @@
                       <label class="custom-file-label" for="inputGroupFile01">Pilih file</label>
                     </div>
                   </div>
+                  <x-auth-validation-errors name="berkas"/>
             </div>
         </div>
     </div>
