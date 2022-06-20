@@ -63,19 +63,27 @@
                         <tr>
                             <td>{{ $data->user->name }}</td>
                             <td>{{ $data->daftarsidang->judul_ta }}</td>
-                            @if ($data->daftarsidang->status == 1)
-                                <td class="text-center"><button type="button" class="btn btn-success"><i
-                                            class="fas fa-check-circle"></i></button></td>
+                            @if (isset($data->daftarsidang))
+                                @if ($data->daftarsidang->status == 1)
+                                    <td class="text-center"><button type="button" class="btn btn-success"><i
+                                                class="fas fa-check-circle"></i></button></td>
+                                @else
+                                    <td class="text-center"><button type="button" class="btn btn-danger"><i
+                                                class="fas fa-times-circle"></i></button></td>
+                                @endif
                             @else
-                                <td class="text-center"><button type="button" class="btn btn-danger"><i
-                                            class="fas fa-times-circle"></i></button></td>
+                                <td class="text-center"><button type="button" class="btn btn-danger">Anda belum melakukan pendaftaran</button></td>
                             @endif
-                            @if ($data->jadwalsidang->status == 1)
-                                <td class="text-center"><button type="button" class="btn btn-success"><i
-                                            class="fas fa-check-circle"></i></button></td>
+                            @if (isset($data->jadwalsidang))
+                                @if ($data->jadwalsidang->status == 1)
+                                    <td class="text-center"><button type="button" class="btn btn-success"><i
+                                                class="fas fa-check-circle"></i></button></td>
+                                @else
+                                    <td class="text-center"><button type="button" class="btn btn-danger"><i
+                                                class="fas fa-times-circle"></i></button></td>
+                                @endif
                             @else
-                                <td class="text-center"><button type="button" class="btn btn-danger"><i
-                                            class="fas fa-times-circle"></i></button></td>
+                                <td class="text-center"><button type="button" class="btn btn-danger">Anda belum memilih jadwal</button></td>
                             @endif
                         </tr>
                     @endforeach
