@@ -36,7 +36,7 @@ Route::middleware(['auth', 'mahasiswa'])->group(function () {
     Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
         Route::get('/', [PendaftaranController::class, 'index'])->name('index');
         Route::post('/store', [PendaftaranController::class, 'store'])->name('store');
-        Route::put('/update', [PendaftaranController::class, 'update'])->name('update');
+        Route::put('/update/{id}', [PendaftaranController::class, 'update'])->name('update');
     });
     Route::prefix('jadwal')->as('jadwal.')->group(function () {
         Route::get('/', [JadwalController::class, 'index'])->name('index');

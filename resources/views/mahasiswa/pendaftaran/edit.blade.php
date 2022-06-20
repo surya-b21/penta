@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('pendaftaran.update') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('pendaftaran.update', $daftar_sidang->id) }}" enctype="multipart/form-data">
     @csrf
     @method('put')
     @include('mahasiswa.pendaftaran.partials.form', ['daftar_sidang' => $daftar_sidang, 'mahasiswa' => $mahasiswa])

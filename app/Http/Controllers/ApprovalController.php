@@ -13,8 +13,4 @@ class ApprovalController extends Controller
         $data['mahasiswa'] = Mahasiswa::all();
         return view('mahasiswa.approval.index', $data);
     }
-
-    public function getData()
-    {
-    }
 }
